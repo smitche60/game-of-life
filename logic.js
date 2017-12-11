@@ -17,21 +17,15 @@ const generateSuccessorCell = (x, y, board) => {
   const currentState = board[x][y];
   const liveNeighbors = countLiveNeighbors(x, y, board);
 
-  if (currentState === 1) {
-    if (liveNeighbors < 2) {
-      return 0;
-    }
-    if (liveNeighbors === 2 || liveNeighbors === 3) {
-      return 1;
-    }
-    if (liveNeighbors > 3) {
-      return 0;
-    }
-  }
+  const underpopulation = currentState === 1 && liveNeighbors < 2;
+  const survival = currentState === 1 && (liveNeighbors === 2 || liveNeighbors === 3);
+  const overpopulation = currentState === 1 && liveNeighbors > 3;
+  const reproduction = currentState === 0 && liveNeighbors === 3;
 
-  if (currentState === 0 && liveNeighbors === 3) {
-    return 1;
-  }
+  if (underpopulation) { return 0; }
+  if (survival) { return 1; }
+  if (overpopulation) { return 0; }
+  if (reproduction) { return 1; }
   return 0;
 };
 
