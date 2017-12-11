@@ -1,8 +1,3 @@
-// Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
-// Any live cell with two or three live neighbours lives on to the next generation.
-// Any live cell with more than three live neighbours dies, as if by overpopulation.
-// Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-
 const isLiveCell = (x, y, board) => board[x] && board[x][y] && board[x][y] === 1;
 
 const countLiveNeighbors = (x, y, board) => {
@@ -40,9 +35,22 @@ const generateSuccessorCell = (x, y, board) => {
   return 0;
 };
 
-const generateSuccessorBoard = (board) => {
-  let successor = [];
-  // iterate over each cell, pushing the next generation to the successor
-}
+const generateEmptyBoard = (x, y) => {
+  const emptyBoard = [];
+  for (let i = 0; i < y; i += 1) {
+    emptyBoard.push(new Array(x));
+  }
+  return emptyBoard;
+};
 
-module.exports = { countLiveNeighbors };
+const generateSuccessorBoard = (board) => {
+  const successor = generateEmptyBoard(board[0].length, board.length);
+  board.forEach((row, i) => {
+    row.forEach((cell, j) => {
+      successor[i][j] = generateSuccessorCell(i, j, board);
+    });
+  });
+  return successor;
+};
+
+module.exports = { countLiveNeighbors, generateSuccessorCell, generateSuccessorBoard };
