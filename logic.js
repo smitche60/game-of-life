@@ -18,4 +18,31 @@ const countLiveNeighbors = (x, y, board) => {
   return liveNeighborCount;
 };
 
+const generateSuccessorCell = (x, y, board) => {
+  const currentState = board[x][y];
+  const liveNeighbors = countLiveNeighbors(x, y, board);
+
+  if (currentState === 1) {
+    if (liveNeighbors < 2) {
+      return 0;
+    }
+    if (liveNeighbors === 2 || liveNeighbors === 3) {
+      return 1;
+    }
+    if (liveNeighbors > 3) {
+      return 0;
+    }
+  }
+
+  if (currentState === 0 && liveNeighbors === 3) {
+    return 1;
+  }
+  return 0;
+};
+
+const generateSuccessorBoard = (board) => {
+  let successor = [];
+  // iterate over each cell, pushing the next generation to the successor
+}
+
 module.exports = { countLiveNeighbors };
