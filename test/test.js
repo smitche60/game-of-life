@@ -1,6 +1,5 @@
 /* eslint-env mocha */
 const logic = require('../logic.js');
-// const assert = require('assert');
 const chai = require('chai');
 
 const { expect } = chai;
@@ -19,10 +18,22 @@ describe('countLiveNeighbors', () => {
 });
 
 describe('generateSuccessorBoard', () => {
-  const testBoard = [[0, 1, 1], [0, 0, 1], [1, 1, 0]];
-  it('generate correct board when underpopulation occurs', () => {
-    const successorBoard = logic.generateSuccessorBoard(testBoard);
+  it('should generate correct board when underpopulation occurs', () => {
+    const testBoard = [[0, 1, 1], [0, 0, 1], [1, 1, 0]];
+    const successorBoardTest = logic.generateSuccessorBoard(testBoard);
     const successorBoardAnswer = JSON.stringify([[0, 1, 1], [1, 0, 1], [0, 1, 0]]);
-    expect(JSON.stringify(successorBoard)).to.equal(successorBoardAnswer);
+    expect(JSON.stringify(successorBoardTest)).to.equal(successorBoardAnswer);
+  });
+  it('should generate correct board when overpopulation occurs', () => {
+    const testBoard = [[1, 1, 1], [1, 1, 1], [1, 1, 1]];
+    const successorBoardTest = logic.generateSuccessorBoard(testBoard);
+    const successorBoardAnswer = JSON.stringify([[1, 0, 1], [0, 0, 0], [1, 0, 1]]);
+    expect(JSON.stringify(successorBoardTest)).to.equal(successorBoardAnswer);
+  });
+  it('should generate correct board when reproduction occurs', () => {
+    const testBoard = [[0, 1, 0], [1, 1, 1], [0, 1, 0]];
+    const successorBoardTest = logic.generateSuccessorBoard(testBoard);
+    const successorBoardAnswer = JSON.stringify([[1, 1, 1], [1, 0, 1], [1, 1, 1]]);
+    expect(JSON.stringify(successorBoardTest)).to.equal(successorBoardAnswer);
   });
 });
