@@ -17,3 +17,12 @@ describe('countLiveNeighbors', () => {
     expect(logic.countLiveNeighbors(0, 1, testBoard)).to.equal(2);
   });
 });
+
+describe('generateSuccessorBoard', () => {
+  const testBoard = [[0, 1, 1], [0, 0, 1], [1, 1, 0]];
+  it('generate correct board when underpopulation occurs', () => {
+    const successorBoard = logic.generateSuccessorBoard(testBoard);
+    const successorBoardAnswer = JSON.stringify([[0, 1, 1], [1, 0, 1], [0, 1, 0]]);
+    expect(JSON.stringify(successorBoard)).to.equal(successorBoardAnswer);
+  });
+});
