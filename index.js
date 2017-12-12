@@ -10,9 +10,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/client'));
 
 // Listen at the specified port
-const port = 8000;
-app.listen(port, () => {
-  console.log('Listening on port :', port);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log('Listening on port :', PORT);
 });
 
 app.post('/start', (req, res) => {
