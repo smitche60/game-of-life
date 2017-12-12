@@ -22,8 +22,7 @@ app.post('/start', (req, res) => {
 
 app.post('/successor', (req, res) => {
   const successor = logic.generateSuccessorBoard(req.body.currentBoard);
-  const isSame = JSON.stringify(req.body.currentBoard) === JSON.stringify(successor);
-  res.send({ successor, isSame });
+  res.send({ successor });
 });
 
 module.exports = app;

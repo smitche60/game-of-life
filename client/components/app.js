@@ -23,9 +23,6 @@ app.controller('appController', ($scope, $http) => {
     $http.post('/successor', { currentBoard })
       .then((response) => {
         $scope.board = response.data.successor;
-        if (response.data.isSame) {
-          clearInterval($scope.refreshIntervalId);
-        }
       });
   };
 
