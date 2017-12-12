@@ -37,6 +37,16 @@ const generateEmptyBoard = (x, y) => {
   return emptyBoard;
 };
 
+const generateStartingBoard = (x, y) => {
+  const board = generateEmptyBoard(x, y);
+  for (let i = 0; i < x; i += 1) {
+    for (let j = 0; j < y; j += 1) {
+      board[i][j] = Math.floor(Math.random() * 2);
+    }
+  }
+  return board;
+};
+
 const generateSuccessorBoard = (board) => {
   const successor = generateEmptyBoard(board[0].length, board.length);
   board.forEach((row, i) => {
@@ -47,4 +57,4 @@ const generateSuccessorBoard = (board) => {
   return successor;
 };
 
-module.exports = { countLiveNeighbors, generateSuccessorCell, generateSuccessorBoard };
+module.exports = { generateSuccessorBoard, generateStartingBoard };
