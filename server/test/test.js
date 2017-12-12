@@ -37,3 +37,21 @@ describe('generateSuccessorBoard', () => {
     expect(JSON.stringify(successorBoardTest)).to.equal(successorBoardAnswer);
   });
 });
+
+describe('generateStartingBoard', () => {
+  it('should should generate a 5x5 board', () => {
+    const testStartingBoard = logic.generateStartingBoard(5, 5);
+    expect(testStartingBoard.length).to.equal(5);
+    expect(testStartingBoard[0].length).to.equal(5);
+  });
+  it('should should generate a 10x10 board', () => {
+    const testStartingBoard = logic.generateStartingBoard(10, 10);
+    expect(testStartingBoard.length).to.equal(10);
+    expect(testStartingBoard[0].length).to.equal(10);
+  });
+  it('should should generate a 15x15 board', () => {
+    const testStartingBoard = logic.generateStartingBoard(15, 15);
+    expect(testStartingBoard.length).to.equal(15);
+    expect(testStartingBoard[0].length).to.equal(15);
+  });
+});
