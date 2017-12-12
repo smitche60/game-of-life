@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+td {
+  height: 50px;
+  width: 50px;
+}
+
+button {
+  padding: 10px 10px 10px 10px;
+}
+
+div {
+  padding: 10px 10px 10px 10px;
+}
+
+._1 {
+  background-color: black;
+}
+
+._0 {
+  background-color: white;
+}
