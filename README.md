@@ -13,7 +13,7 @@ npm install
 ```
 3. Start server
 ```
-node index.js
+npm start
 ```
 4. Navigate to http://127.0.0.1:8000/
 
