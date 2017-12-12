@@ -57,4 +57,4 @@ const generateSuccessorBoard = (board) => {
   return successor;
 };
 
-module.exports = { generateSuccessorBoard, generateStartingBoard };
+module.exports = { countLiveNeighbors, generateSuccessorBoard, generateStartingBoard };

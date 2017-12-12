@@ -1,4 +1,4 @@
-const app = angular.module('app', [])
+const app = angular.module('app', []);
 
 app.component('app', {
   controller: 'appController',
@@ -9,8 +9,6 @@ app.controller('appController', ($scope, $http) => {
   $scope.board = null;
 
   $scope.handleclick = (number) => {
-    console.log("clicked")
-    console.log(number);
     $scope.getStartingBoard(number, number);
   };
 
@@ -24,11 +22,16 @@ app.controller('appController', ($scope, $http) => {
   $scope.getSuccessor = (currentBoard) => {
     $http.post('/successor', { currentBoard })
       .then((response) => {
-        $scope.board = response.data;
+        $scope.board = response.data.successor;
+        if (response.data.isSame) {
+          clearInterval($scope.refreshIntervalId);
+        }
       });
   };
 
-  setInterval(() => {
-    $scope.getSuccessor($scope.board);
+  $scope.refreshIntervalId = setInterval(() => {
+    if ($scope.board != null) {
+      $scope.getSuccessor($scope.board);
+    }
   }, 1000);
 });
