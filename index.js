@@ -15,6 +15,11 @@ app.listen(port, () => {
   console.log('Listening on port :', port);
 });
 
+app.post('/start', (req, res) => {
+  const start = logic.generateStartingBoard(req.body.x, req.body.y);
+  res.send(start);
+});
+
 app.post('/successor', (req, res) => {
   const successor = logic.generateSuccessorBoard(req.body.currentBoard);
   res.send(successor);
