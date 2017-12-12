@@ -16,3 +16,8 @@ npm install
 node index.js
 ```
 4. Navigate to http://127.0.0.1:8000/
+
+5. Run tests
+```
+npm test
+```
