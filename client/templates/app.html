@@ -1,7 +1,19 @@
+<div>
+  Select a board size:
+</div>
+
+<select class="size" name="Board Size" ng-model="input" ng-init="input='5'">
+  <option value="5">5</option>
+  <option value="10">10</option>
+  <option value="15">15</option>
+</select>
+
+<button ng-click="handleclick(input)">Run</button>
+
 <table border="1">
-  <tbody  ng-repeat="row in board">
+  <tbody ng-repeat="row in board">
     <tr>
-      <td width="50px" ng-repeat="value in row track by $index">{{value}}</td>
+      <td ng-repeat="value in row track by $index" class=_{{value}}></td>
     </tr>
   </tbody>
 </table>
